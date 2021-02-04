@@ -30,7 +30,7 @@
         </form>
         <div class="weather-status text-white text-center">
             <img src="https://openweathermap.org/img/wn/02d@2x.png" alt="">
-            <h1 id="city-name">Dhaka</h1>
+            <h1 id="city-name">London</h1>
             <h3 id="temperature"><span>38.06</span>&deg;C</h3>
             <h1 id="atmosphere" class="lead">Clouds</h1>
         </div>
@@ -41,23 +41,21 @@
             temperatureWeather()
         })
         function temperatureWeather() {
-            fetch(`https://api.openweathermap.org/data/2.5/weather?q= 
-            ${searchPlace}&appid=4c0174b10931e93aa8e3aa499a666d4e`)
+            fetch(`https://api.openweathermap.org/data/2.5/weather?q=searchPlace&appid=96d6d3d2ced1bf2a9138a860a6f95357`)
 
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
-
-
-
-                    /*
+                    //console.log(data);
+                    const cityName =data.name
+                    const temperature =data['main'] ['temp'];
+                    const atmosphere =data.weather[0]['main'];
                     
-                document.getElementById('city-name').innerText;
-                document.getElementById('temperature').innerText;
-                document.getElementById('atmosphere').innerText;*/
-               // 4c0174b10931e93aa8e3aa499a666d4e
+                document.getElementById('city-name').innerText=cityName
+                document.getElementById('temperature').innerText=temperature
+                document.getElementById('atmosphere').innerText=atmosphere
+             
                 })
-                
+               // .catch(error => alert('Wrong city Name'));
         }
     </script>
 </body>
